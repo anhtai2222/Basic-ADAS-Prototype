@@ -1,0 +1,7 @@
+# ADAS prototype pinned dependencies.
+# Tested with Python 3.10 - 3.12.
+numpy==1.26.4
+opencv-python==4.10.0.84
+python-can==4.4.2
+pygame==2.6.1
+pytest==8.3.3

@@ -1,0 +1,36 @@
+PLACEHOLDER — this is not a real .mp4 file.
+
+The ADAS prototype does not ship with a binary sample video to keep the
+repository lightweight. You have three options to get a video to test with:
+
+1. SIMULATION (no file needed, recommended for a first run):
+       python main.py --simulate
+   This generates a synthetic road internally — no webcam or file required.
+
+2. WEBCAM:
+       python main.py --webcam
+
+3. PROVIDE YOUR OWN CLIP:
+   Drop any dashcam / road-driving clip here and rename it sample_video.mp4,
+   then run:
+       python main.py --video assets/sample_video.mp4
+
+4. GENERATE A REAL MP4 FROM THE SIMULATOR:
+   You can render the synthetic road to an actual .mp4 with a few lines:
+
+       import cv2
+       from config import CONFIG
+       from simulation.sim_runner import SyntheticRoad
+
+       road = SyntheticRoad(CONFIG)
+       fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+       writer = cv2.VideoWriter(
+           "assets/sample_video.mp4", fourcc, CONFIG.video.fps,
+           (CONFIG.video.width, CONFIG.video.height),
+       )
+       for frame in road.frames():
+           writer.write(frame)
+       writer.release()
+
+Good road clips for testing are widely available under permissive licenses on
+sites like Pexels and Pixabay (search "dashcam highway").

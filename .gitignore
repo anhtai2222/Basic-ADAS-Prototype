@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# ADAS run artifacts
+can_log.txt
+
+# OS / editor
+.DS_Store
+.vscode/
